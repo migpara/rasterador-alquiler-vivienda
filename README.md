@@ -154,7 +154,7 @@ PROYECTO_INMOBILIARIO_BOT/
   - ⚠️ **ALGO CARO** (Algo caro): +10% a +20% por encima
   - ❌ **MUY CARO** (Muy caro): > +20% por encima
 
-### 5. `rastreadorav2.py` – Rastreador en Tiempo Real
+### 5. `rastreadorv2.py` – Rastreador en Tiempo Real
 - **Tecnología**: Selenium sin detección (anti-bot)
 - **Función**: Monitorea continuamente Idealista buscando nuevos anuncios
 - **Proceso**:
@@ -548,7 +548,7 @@ See `LICENSE` file for complete terms.
 **Golden Rule:** If you're going to make money with this → **Contact Miguel Paniagua first.**
 
 For commercial licensing inquiries:
-- 📧 Email: [your-email@example.com]
+- 📧 Email: [migpanra@gmail.com]
 - 💼 Include: details of use, target market, financial projections
 
 ---
