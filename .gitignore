@@ -1,0 +1,13 @@
+# Ignorar secretos
+.env
+
+# Ignorar archivos compilados de Python
+__pycache__/
+*.pyc
+
+# Ignorar datos locales (opcional, si el CSV es muy grande no se debe subir)
+# dataset_madrid_definitivo.csv
+# dataset_madrid_limpio_IA.csv
+
+# Ignorar logs
+*.log

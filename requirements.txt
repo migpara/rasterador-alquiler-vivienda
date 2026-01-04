@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+fastapi
+uvicorn
+pydantic
+undetected-chromedriver
+beautifulsoup4
+requests
+python-dotenv
+joblib
+seaborn
+matplotlib
