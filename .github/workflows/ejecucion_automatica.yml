@@ -1,4 +1,4 @@
-name: Bot Inmobiliario
+name: 🏠 Bot Inmobiliario - ViviendaRadar
 
 on:
   schedule:
@@ -8,48 +8,61 @@ on:
 jobs:
   busqueda-y-tasacion:
     runs-on: ubuntu-latest
+    timeout-minutes: 30 # Máximo 30 minutos por ejecución
 
     steps:
-      - name: 1. Descargar repositorio
+      - name: 1️⃣ Descargar repositorio
         uses: actions/checkout@v3
 
-      - name: 2. Configurar Python
+      - name: 2️⃣ Configurar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: 3. Instalar Google Chrome (Para el Rastreador)
+      - name: 3️⃣ Instalar Google Chrome (Para el Rastreador)
         run: |
           wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get -y update
           sudo apt-get install -y google-chrome-stable
 
-      - name: 4. Instalar librerías
-        run: pip install -r requirements.txt
+      - name: 4️⃣ Instalar librerías
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-
-      - name: 5. Iniciar API de Tasación
+      - name: 5️⃣ Iniciar API de Tasación
         run: |
           # Arranca la API en segundo plano (nohup) y usa el modelo que subiste
           nohup python api_tasadorav2.py > api.log 2>&1 &
-          echo "Esperando 10 segundos a que la API cargue el cerebro..."
+          echo "⏳ Esperando 10 segundos a que la API cargue el cerebro..."
           sleep 10
+          echo "✅ API lista para recibir solicitudes"
 
-      - name: 6. Ejecutar Rastreador
+      - name: 6️⃣ Ejecutar Rastreador
         env:
-          # Las llaves secretas que estan en GitHub
+          # Las claves secretas que están en GitHub
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           # En GitHub Actions, la API siempre está en localhost
           API_URL: "http://localhost:8000/tasar"
           # Variable para que tu script sepa que está en la nube
           GITHUB_ACTIONS: "true"
-        run: python rastreadorv2.py 
-        
-      - name: 7. Guardar resultados (Opcional)
+        run: |
+          echo "🕷️ Iniciando rastreador de gangas..."
+          python rastreadorav2.py
+          echo "✅ Rastreador completado"
+
+      - name: 7️⃣ Guardar resultados (Opcional)
         if: always() # Se ejecuta aunque falle algo
         uses: actions/upload-artifact@v4
         with:
-          name: resultados-gangas
+          name: resultados-gangas-$(date +%Y-%m-%d-%H%M)
           path: caza_gangas_resultados.csv
+          retention-days: 30 # Guarda los resultados 30 días
+
+      - name: 📋 Mostrar logs de la API
+        if: always()
+        run: |
+          echo "=== Logs de la API ==="
+          cat api.log || echo "No hay logs de API disponibles"
