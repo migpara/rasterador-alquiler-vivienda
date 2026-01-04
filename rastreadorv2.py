@@ -42,15 +42,19 @@ def espiar_idealista_selenium():
     options.add_argument('--headless') # No activar headless si quieres ver qué hace(activarlo si se quiere subir a la nube)
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-blink-features=AutomationControlled')
+    options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
 
-    driver = uc.Chrome(options=options)
+    driver = uc.Chrome(options=options,version_main=None)
     pisos_extraidos = []
 
     try:
         # 1. CARGAR LA LISTA
         driver.get(URL_BUSQUEDA)
         print("⏳ Esperando lista de pisos...")
-        time.sleep(5)
+        time.sleep(15)
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(3)
         
         # Sacamos solo los LINKS primero
         soup_lista = BeautifulSoup(driver.page_source, 'html.parser')
@@ -72,7 +76,7 @@ def espiar_idealista_selenium():
                 driver.get(link)
                 
                 # Pausa aleatoria para parecer humano (IMPORTANTE al navegar mucho)
-                time.sleep(random.uniform(2, 4))
+                time.sleep(random.uniform(5, 10))
                 
                 soup_ficha = BeautifulSoup(driver.page_source, 'html.parser')
                 
