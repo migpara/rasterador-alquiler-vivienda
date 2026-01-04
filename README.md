@@ -9,6 +9,9 @@
 > **Un proyecto personal nacido de ver a muchos jóvenes cercanos luchar por acceder a una vivienda digna en Madrid**
 
 ---
+## ⚠️ Nota:
+Idealista bloquea tráfico desde IPs de datacenter (GitHub Actions, Azure, etc.).
+El scraper está diseñado para ejecución local o con proxy residencial
 
 ## ⚠️ DISCLAIMER LEGAL Y COPYRIGHT
 
