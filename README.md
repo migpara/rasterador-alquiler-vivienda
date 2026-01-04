@@ -77,10 +77,7 @@ Creé este proyecto porque veía que mucha gente joven cercana no podía acceder
 ## 🏗️ Arquitectura del Sistema
 
 ```text
-PROYECTO_INMOBILIARIO_BOT/
-├── .github/
-│   └── workflows/
-│       └── ejecucion_automatica.yml
+PROYECTO_INMOBILIARIO_BOT/       
 ├── .env                     <-- ¡AQUÍ IRÁN TUS CLAVES!
 ├── .gitignore               <-- EL ESCUDO (protege .env)
 ├── requirements.txt         <-- LIBRERÍAS
@@ -91,7 +88,7 @@ PROYECTO_INMOBILIARIO_BOT/
 ├── entrenar_tasadorav2.py
 ├── etl_limpiezav2.py
 ├── explorador_datosv2.py
-├── rastreadorav2.py
+├── rastreadorv2.py
 └── dataset_madrid_*.csv     (no se suben a GitHub)
 ```
 
@@ -218,7 +215,7 @@ python api_tasadorav2.py
 # TELEGRAM_TOKEN=tu_token_bot
 # TELEGRAM_CHAT_ID=tu_chat_id
 
-python rastreadorav2.py
+python rastreadorv2.py
 # Monitorea Idealista y envía alertas a Telegram
 ```
 
@@ -388,7 +385,7 @@ Ver archivo `LICENSE` para los términos completos.
 **Regla de Oro:** Si vas a generar dinero con esto → **Contacta con Miguel Paniagua primero.**
 
 Para solicitar licencia comercial:
-- 📧 Email: [tu-email@ejemplo.com]
+- 📧 Email: [migpanra@gmail.com]
 - 💼 Incluye: detalles del uso, mercado objetivo, proyecciones financieras
 
 ---
