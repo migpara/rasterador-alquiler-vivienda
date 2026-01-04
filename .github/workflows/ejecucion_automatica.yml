@@ -49,7 +49,7 @@ jobs:
           GITHUB_ACTIONS: "true"
         run: |
           echo "🕷️ Iniciando rastreador de gangas..."
-          python rastreadorav2.py
+          python rastreadorv2.py
           echo "✅ Rastreador completado"
 
       - name: 7️⃣ Guardar resultados (Opcional)
